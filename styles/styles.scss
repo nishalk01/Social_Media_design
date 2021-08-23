@@ -1,0 +1,517 @@
+// card radius
+$card-radius: 40px;
+$image-radius: 12px;
+$body-card-radius: 20px;
+// box shadow
+$box-shadow1: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$box-shadow2: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+$box-shadow3: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+  rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+// colores
+$background: #fee3c3;
+$text-not-active: #605854;
+$icon-color: #413c3c;
+$active-color: #f6b068;
+$tag2-color: #fea07b;
+$light-border-color: #f9eff0;
+
+$new-color-scheme: #0083b0;
+$new-color-scheme2: #00b4db;
+
+$navbar-mobile-icon: 25px;
+
+@mixin flexDirection(
+  $Jdirection: flex-start,
+  $Adirection: flex-start,
+  $direction: "row"
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $Jdirection;
+  align-items: $Adirection;
+}
+
+html,
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: #00b4db; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    $new-color-scheme,
+    $new-color-scheme2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    $new-color-scheme2,
+    $new-color-scheme
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 100vw;
+  height: 100%;
+  @include flexDirection(center, flex-end);
+  transition: ease all 0.3s;
+}
+
+.navbar-mobile {
+  display: none;
+}
+.container {
+  height: 95%;
+  width: 95%;
+
+  backdrop-filter: blur(24px) saturate(149%);
+  -webkit-backdrop-filter: blur(24px) saturate(149%);
+  background-color: rgba(250, 250, 250, 0.7);
+  border-radius: $card-radius;
+}
+
+// navbar starts
+.navbar-container {
+  margin: 0px 20px 0px 30px;
+  border-radius: $card-radius;
+  display: flex;
+  height: 100px;
+}
+
+.fa-lyft {
+  font-size: 70px;
+  margin-top: 20px;
+  text-shadow: $box-shadow2;
+}
+.logo-container {
+  flex: 5;
+  @include flexDirection($Adirection: "center", $Jdirection: "center");
+}
+
+.navtextOptions {
+  flex: 8;
+  @include flexDirection($direction: "column", $Jdirection: "space-between");
+  gap: 100px;
+  align-self: center;
+  .active {
+    color: black;
+    border-bottom: 3px solid $active-color;
+  }
+  div {
+    font-size: 21px;
+    font-weight: 600;
+    color: $text-not-active;
+    cursor: pointer;
+    &:hover {
+      @extend .active;
+    }
+  }
+}
+
+.iconOption {
+  flex: 2;
+  padding-left: 80px;
+  @include flexDirection($Adirection: center, $Jdirection: space-around);
+  i {
+    font-size: 25px;
+    cursor: pointer;
+    color: #46403b;
+  }
+}
+
+.profile-details {
+  flex: 4;
+  @include flexDirection($Adirection: center, $Jdirection: flex-end);
+  margin-right: 12px;
+  gap: 20px;
+  font-weight: 600;
+  font-size: 21px;
+  color: $icon-color;
+}
+.profile-image {
+  overflow: hidden;
+  @include flexDirection($Jdirection: center, $Adirection: center);
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+}
+// nabar ends
+
+// body starts
+.body {
+  display: flex;
+  // margin-top: 30px;
+}
+
+.top-artists-container {
+  flex: 2;
+  overflow: hidden;
+}
+// https://blog.hubspot.com/website/hide-scrollbar-css
+.post-flex-container {
+  flex: 7;
+  @include flexDirection($Jdirection: center, $Adirection: center);
+  width: 100%;
+}
+.post-container {
+  gap: 30px;
+  flex: 7;
+  height: 100vh;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  @include flexDirection($Adirection: center, $direction: column);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.popular-posts {
+  flex: 2;
+  overflow: hidden;
+}
+
+// top artists style
+
+.top-artists-card {
+  width: 100%;
+  @include flexDirection($direction: column);
+  background-color: white;
+  border-radius: $body-card-radius;
+  height: 100vh;
+}
+
+.artist-title {
+  width: 90%;
+  @include flexDirection($Jdirection: space-between);
+  margin: 20px 10px 0px 10px;
+}
+.card-text {
+  font-size: 19px;
+  font-weight: bold;
+}
+.text-button {
+  @extend .card-text;
+  color: $new-color-scheme;
+  cursor: pointer;
+}
+
+.artist-card-container {
+  @include flexDirection(
+    $Adirection: center,
+    $Jdirection: center,
+    $direction: column
+  );
+  padding: 25px;
+}
+
+.artist-card {
+  @include flexDirection(
+    $Adirection: center,
+    $Jdirection: center,
+    $direction: row
+  );
+  border-radius: $image-radius;
+  margin-top: 25px;
+  transition: transform ease-out 0.2s;
+  border: 2px solid $light-border-color;
+  padding-right: 2px;
+  &:hover {
+    box-shadow: $box-shadow3;
+    transform: scale(1.1);
+  }
+}
+
+.artist-card-image {
+  @extend .profile-image;
+  width: 100px;
+  height: 100px;
+  margin-right: 5px;
+}
+.artist-details-container {
+  text-align: center;
+}
+.artist-name {
+  font-weight: 900;
+}
+
+.follower-count {
+  color: #9c9c9c;
+  font-weight: 600;
+}
+// end top artists card
+
+.post-card {
+  // padding: 10px;
+  width: 90%; //change this to 100% for small device
+  background-color: white;
+  border-radius: $body-card-radius;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.post-card-profile {
+  flex: 1;
+  @include flexDirection($Adirection: center, $direction: row);
+  border-radius: $body-card-radius;
+  height: 100px;
+}
+
+.post-profile-image {
+  width: 80px;
+  height: 80px;
+  @extend .artist-card-image;
+}
+
+.post-profile-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.name-and-date {
+  display: flex;
+}
+.post-date {
+  color: $text-not-active;
+  font-size: 17px;
+  align-self: flex-end;
+}
+
+.tag-container {
+  margin-top: 5px;
+  @include flexDirection($direction: row);
+  gap: 5px;
+}
+.tags {
+  border-radius: $image-radius;
+  background-color: $active-color;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.card-margin {
+  margin: 15px 30px;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: $body-card-radius;
+  max-height: 800px;
+}
+.post-image-container {
+  margin-top: 20px;
+  border-radius: $body-card-radius;
+  position: relative;
+}
+
+.post-image-details {
+  border-bottom-left-radius: $body-card-radius;
+  border-bottom-right-radius: $body-card-radius;
+  // background-color: red;
+  border-left: 2px solid $light-border-color;
+  border-right: 2px solid $light-border-color;
+  border-bottom: 2px solid $light-border-color;
+  padding: 20px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(63, 62, 62);
+}
+
+.post-action-container {
+  padding: 20px;
+  @include flexDirection($Adirection: center, $Jdirection: space-between);
+  i {
+    font-size: 25px;
+    color: $text-not-active;
+  }
+  .icon-with-text {
+    @include flexDirection($Jdirection: space-between);
+  }
+}
+
+.like-actions {
+  @include flexDirection($Adirection: center, $Jdirection: space-between);
+  flex: 1;
+}
+.blank-between {
+  flex: 3;
+  background-color: $tag2-color;
+}
+
+// popular posts
+.popular-post-card {
+  @extend .top-artists-card;
+  // background-color: ;
+  background-color: #51dcfb;
+  width: 100%;
+  height: 100vh;
+  @include flexDirection(
+    $Jdirection: flex-start,
+    $Adirection: center,
+    $direction: column
+  );
+}
+
+.popular-post-of-day-container {
+  margin-top: 10px;
+  width: 100%;
+  @include flexDirection(
+    $Jdirection: center,
+    $Adirection: center,
+    $direction: column
+  );
+}
+
+.popular-post-of-day {
+  @extend .profile-image;
+  width: 88%;
+  min-height: 200px;
+  max-height: 300px;
+  //  background-color: $active-color;
+  border-radius: 30px;
+  border: 10px solid white;
+  box-shadow: $box-shadow1;
+  transition: transform cubic-bezier(0.18, 0.89, 0.32, 2.28) 0.4s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.popular-post-image {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.suggested-ppl-container {
+  @include flexDirection(
+    $Jdirection: center,
+    $Adirection: center,
+    $direction: column
+  );
+  overflow: scroll;
+  margin: 5px;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.suggested-ppl-card {
+  width: 100%;
+  @include flexDirection($direction: row, $Jdirection: center);
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
+.suggested-card-items {
+  @include flexDirection($direction: row, $Adirection: center);
+  gap: 30px;
+}
+
+.fab-button {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 100%;
+  background-color: #00b4db;
+  text-align: center;
+  cursor: pointer;
+  @include flexDirection($Jdirection: center, $Adirection: center);
+  color: white;
+}
+
+// responsive navbar
+// less than 1280 it's okay with desktop size
+
+@media screen and (max-width: 1280px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    // background-color:$background;
+  }
+  .top-artists-container {
+    display: none;
+    flex: 0;
+  }
+  .popular-post-card {
+    display: none;
+  }
+  .post-flex-container {
+    flex: initial;
+  }
+
+  .action-icon {
+    font-size: $navbar-mobile-icon;
+    color: white;
+  }
+  .navbar-mobile {
+    padding: 3px;
+    @include flexDirection($Jdirection: space-between, $Adirection: center);
+    box-shadow: $box-shadow2;
+    margin-bottom: 5px;
+    padding: 8px;
+    background-color: $new-color-scheme;
+    i {
+      cursor: pointer;
+    }
+    .fa-affiliatetheme {
+      text-shadow: $box-shadow2;
+      font-size: 40px;
+      color: white;
+    }
+  }
+  .navbar-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .post-card {
+    width: 100%;
+  }
+
+  .card-margin {
+    margin: 15px 5px;
+  }
+  .post-image {
+    border-radius: 0px;
+  }
+
+  .post-image-details {
+    font-size: 14px;
+    padding: 10px 5px;
+  }
+  .post-action-container {
+    padding: 10px 15px;
+  }
+  .post-card-profile {
+    height: 40px;
+  }
+  .post-profile-image {
+    height: 55px;
+    width: 55px;
+  }
+  .post-profile-name {
+    font-size: 15px;
+  }
+  .tags {
+    font-size: 12px;
+  }
+  .post-date {
+    font-size: 13px;
+  }
+  .navbar-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .suggested-ppl-container {
+    display: none;
+  }
+  #suggestion-title {
+    display: none;
+  }
+}
+// font-size: 14px;
