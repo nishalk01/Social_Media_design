@@ -529,6 +529,16 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-transition: font-size 0.3s ease-in;
+  transition: font-size 0.3s ease-in;
+}
+
+.like-actions i {
+  cursor: pointer;
+}
+
+.like-actions i:hover {
+  font-size: 27px;
 }
 
 .blank-between {
@@ -687,6 +697,96 @@ body {
   color: white;
 }
 
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background-color: #615d5d;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Black w/ opacity */
+  z-index: 1;
+  -webkit-animation-name: fadeIn;
+  /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "row";
+          flex-direction: "row";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  -webkit-transition: display 0.5s ease-in;
+  transition: display 0.5s ease-in;
+}
+
+.modal .modal-body {
+  width: 700px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 0px;
+}
+
+.modal .modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.modal .share-item {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  cursor: pointer;
+  -webkit-transition: font-size .1s ease-in;
+  transition: font-size .1s ease-in;
+}
+
+.modal .share-item:hover {
+  color: #0083b0;
+  font-size: 23px;
+}
+
+.modal .share-item i {
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #c3c3c3;
+}
+
 @media screen and (max-width: 1280px) {
   .container {
     width: 100%;
@@ -716,18 +816,16 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: "row";
-            flex-direction: "row";
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     margin-bottom: 5px;
     padding: 8px;
     background-color: #0083b0;
@@ -739,6 +837,33 @@ body {
     text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     font-size: 40px;
     color: white;
+  }
+  .navbar-mobile #optionsbar-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 0px;
+    width: 100%;
+    background-color: red;
+    -webkit-transition: height ease-out .2s;
+    transition: height ease-out .2s;
+  }
+  .navbar-mobile-button {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: "row";
+            flex-direction: "row";
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 10px;
   }
   .navbar-container {
     display: none;
@@ -781,6 +906,9 @@ body {
   .navbar-container {
     display: none;
   }
+  .modal > .modal-body {
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 1700px) {
@@ -789,6 +917,24 @@ body {
   }
   #suggestion-title {
     display: none;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=styles.css.map */

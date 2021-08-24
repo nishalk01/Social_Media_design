@@ -19,9 +19,51 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="./script/index.js"></script>
   </head>
   <body>
+    
     <div class="container">
+      <!-- modal 1 -->
+      <div class="modal" id="share-modal">
+        <div class="modal-body">
+          <div class="modal-content">
+         <div class="card-text" style="align-self: center;">  Share to.... 
+          </div>
+           <div class="divider">
+           </div>
+           <div class="share-item">
+            <i class="far fa-paper-plane"></i>  
+            Share direct 
+           </div>
+
+           <div class="share-item">
+            <i class="fab fa-whatsapp"></i>
+            Share on Whatsapp 
+           </div>
+
+           <div class="share-item">
+            <i class="fab fa-twitter"></i>
+            Share on Twitter 
+           </div>
+
+           <div class="share-item">
+            <i class="far fa-envelope"></i>
+            Share through Email 
+           </div>
+
+           <div class="share-item" style="margin-left: 90px;" onclick="closeShareModal('share-modal')">
+            
+            Cancel
+           </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- modal end  -->
+
+      <!-- navbar starts -->
       <div class="navbar-container">
         <div class="logo-container">
           <i class="fab fa-lyft"></i>
@@ -50,12 +92,19 @@
       </div>
 
       <div class="navbar-mobile">
-        <div>
-          <i class="fab fa-affiliatetheme"></i>
+        <div class="navbar-mobile-button">
+          <div>
+            <i class="fab fa-affiliatetheme"></i>
+          </div>
+  
+          <div class="action-icon">
+            <i class="fas fa-bars" onclick="openNavbar()" ></i>
+          </div>
         </div>
+       
 
-        <div class="action-icon">
-          <i class="fas fa-bars" ></i>
+        <div id="optionsbar-container">
+<!-- for mobile options -->
         </div>
          
       </div>
@@ -187,7 +236,7 @@
                       <!-- <div>&nbsp; 805</div> -->
                     </div>
                     <div class="icon-with-text">
-                      <i class="fas fa-share-alt"></i>
+                      <i class="fas fa-share-alt" onclick="openShareModal('share-modal')"></i>
                       <!-- <div>&nbsp; 1k</div> -->
                     </div>
                   </div>
@@ -252,7 +301,7 @@
                       <!-- <div>&nbsp; 805</div> -->
                     </div>
                     <div class="icon-with-text">
-                      <i class="fas fa-share-alt"></i>
+                      <i class="fas fa-share-alt" onclick="openShareModal('share-modal')"></i>
                       <!-- <div>&nbsp; 1k</div> -->
                     </div>
                   </div>
